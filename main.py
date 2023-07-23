@@ -16,6 +16,7 @@ import re
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
+
 def quoraM(signIn = True):
     from selenium import webdriver
     # object of ChromeOptions class
@@ -23,8 +24,7 @@ def quoraM(signIn = True):
     # incognito parameter passed
     c.add_argument("--incognito")
     #c.add_argument('--headless')
-    driver = webdriver.Chrome(executable_path=r'C:\Users\gecko\PycharmProjects\gigasheet profile boosting\chromedriver.exe', options=c)
-
+    driver = webdriver.Chrome(executable_path='YOUR_CHROMEDRIVER_PATH', options=c)
 
     def click(element):
         element = driver.find_element(By.XPATH, element)
@@ -34,18 +34,6 @@ def quoraM(signIn = True):
         element = driver.find_element(By.XPATH, element)
         element.send_keys(message)
 
-        '''
-    def upvote(url):
-        driver.get(url)
-        while True:
-            try:
-                upvote_element = driver.find_element_by_xpath("//*[contains(text(), 'Upvote')]")
-                upvote_element.click()
-                time.sleep(1)
-                driver.execute_script("window.scrollBy(0, 300)")
-            except:
-                driver.execute_script("window.scrollBy(0, 300)")
-        '''
     from selenium import webdriver
     from selenium.common.exceptions import NoSuchElementException
     import time
@@ -86,19 +74,17 @@ def quoraM(signIn = True):
         
         print("Done!")
 
-
-    def quora(urls=['https://excelhacks.quora.com/?ch=10&oid=1679340&share=396067ef&srid=0ZD&target_type=tribe','https://www.quora.com/profile/Abu-Khan-153','https://www.quora.com/profile/Jason-Hines?ch=2&oid=859886&srid=0ZD&target_type=user','https://www.quora.com/profile/Steve-Schohn-2?q=steve%20schohn','https://www.quora.com/profile/Crystal-Aryeh?q=crystal%20arye','https://www.quora.com/profile/Ian-Kennedy-264'],signIn = True):
-        driver.get('https://www.quora.com/')
+    def quora(urls=['https://www.example.com'], signIn=True):
+        driver.get('https://www.example.com')
 
         if signIn == True:
             filename = 'quora emails.txt'
             with open(filename, 'r') as f:
                 lines = f.readlines()
                 line = random.choice(lines).strip()
-                #line = lines[-1].strip()
                 print('\n\n\n',line,'\n\n\n')
-            password = '8649Password!'
-            email = substring = line.split(",8649Password!", 1)[1]
+            password = 'password_placeholder'
+            email = line.split(",password_placeholder", 1)[1]
             time.sleep(1)
             type('//*[@id="email"]', email)
             print('email: ',email)
@@ -113,7 +99,7 @@ def quoraM(signIn = True):
         if signIn == False:
             name = names.get_first_name(gender='male')
             email = name+names.get_last_name()+str(random.randrange(10))+str(random.randrange(10))+str(random.randrange(10))+str(random.randrange(10))+"@brainmail.org"+'\n'
-            password = '8649Password!'
+            password = 'password_placeholder'
             time.sleep(2)
             click('//*[@id="root"]/div/div[2]/div/div/div/div/div/div[2]/div[1]/div[2]/button')
 
@@ -122,19 +108,13 @@ def quoraM(signIn = True):
             f.write('\n'+','+password+email)
             time.sleep(3)
             suc = False
-            '''
-            try:
-                click('//*[@id="root"]/div[2]/div/div/div/div/div[2]/div[1]/div[2]/button')
-                print('yay1')
-            except:
-                click('//*[@id="root"]/div[2]/div/div/div/div/div[2]/div[1]/div[2]/button/div/div/div')
-                print('yay2')
-            '''
+
             time.sleep(0.4)
             type('//*[@id="profile-name"]',name)
             time.sleep(0.3)
             type('//*[@id="email"]',email)
             time.sleep(0.4)
+
 
             time.sleep(2)
             click('//*[@id="root"]/div/div[2]/div/div/div/div/div[2]/div/div[2]/div[2]/div/div/button')
@@ -165,8 +145,7 @@ def quoraM(signIn = True):
 
 
 
-
-def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','https://www.reddit.com/user/steve_at_gigasheet/'], num_upvotes = 10):
+def reddit(signIn = False, urls = ['https://www.example.com'], num_upvotes = 10):
     from selenium import webdriver
     import time
     import names
@@ -190,19 +169,19 @@ def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','htt
     options.add_argument('--incognito')
     #options.add_argument('--headless')
 
-    driver = webdriver.Chrome(executable_path=r'C:\Users\gecko\PycharmProjects\gigasheet profile boosting\chromedriver.exe',options=options)
+    driver = webdriver.Chrome(executable_path='YOUR_CHROMEDRIVER_PATH',options=options)
     if signIn == False:
-        url = "https://www.reddit.com/account/register/?experiment_d2x_2020ify_buttons=enabled&experiment_d2x_google_sso_gis_parity=enabled&experiment_d2x_onboarding=enabled&experiment_d2x_am_modal_design_update=enabled"
+        url = "https://www.example.com"
         driver.get(url)
         time.sleep(random.uniform(1, 2))
         name = names.get_first_name(gender='male')
         email = name+names.get_last_name()+str(random.randrange(10))+str(random.randrange(10))+str(random.randrange(10))+str(random.randrange(10))+"@brainmail.org"+'\n'
-        password = '8649Password!'
+        password = 'password_placeholder'
 
         type('//*[@id="regEmail"]', email)
         time.sleep(random.uniform(1, 2))
 
-        type('//*[@id="regPassword"]',password)
+        type('//*[@id="regPassword"]','password_placeholder')
         time.sleep(random.uniform(1.5, 2))
 
 
@@ -215,13 +194,13 @@ def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','htt
         input('Captcha Solved?')
         click('/html/body/div[1]/main/div[2]/div/div/fieldset/button')
 
-        f = open(r'C:\Users\gecko\PycharmProjects\gigasheet profile boosting\reddit emails.txt','a')
-        f.write('\n'+username+','+password+','+email)
+        f = open('reddit emails.txt','a')
+        f.write('\n'+username+','+'password_placeholder'+','+email)
         f.close()
         time.sleep(3)
     elif signIn == True:
-        driver.get('https://www.reddit.com/login/')
-        f = open(r'C:\Users\gecko\PycharmProjects\gigasheet profile boosting\reddit emails.txt', 'r')
+        driver.get('https://www.example.com')
+        f = open('reddit emails.txt', 'r')
         lines = f.readlines()
         line = random.choice(lines).strip()
         line = line.split(',')
@@ -231,7 +210,7 @@ def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','htt
         type('//*[@id="loginUsername"]', username)
         time.sleep(random.uniform(1.5, 2))
 
-        type('//*[@id="loginPassword"]',password)
+        type('//*[@id="loginPassword"]','password_placeholder')
         time.sleep(random.uniform(1.5, 2))
 
         click('/html/body/div/main/div[1]/div/div[2]/form/fieldset[5]/button')
@@ -246,12 +225,12 @@ def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','htt
             EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Interests')]")))
             interests_element.click()
             # Find the close icon within the popup
-            ActionChains(driver).send_keys_to_element(interests_element, '\ue00c').perform()
+            ActionChains(driver).send_keys_to_element(interests_element, '\\ue00c').perform()
             time.sleep(3)
         except:
             pass
                 
-                        
+                    
         # Find all the post elements on the page
         posts = driver.find_elements_by_xpath('//div[contains(@class, "Post")]')
 
@@ -281,14 +260,5 @@ def reddit(signIn = False, urls = ['https://www.reddit.com/user/n1nja5h03s','htt
         # Close the browser window
     driver.quit()
 
-
-
-
-
-
-
 print(quoraM(True))
 #reddit(signIn=True)
-
-#currently, the bot upvotes user profiles (starts with a non-gigasheet member, then jason, then...)
-#should add support of non user (ex: https://qr.ae/pvYkEy) (did that), it can now do either profiles, or non profiles. I am a god amonst men
