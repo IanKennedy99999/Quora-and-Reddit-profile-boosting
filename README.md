@@ -1,6 +1,6 @@
 # Quora-and-Reddit-profile-boosting
 
-This Python script automates the process of upvoting posts on Quora and Reddit using the Selenium library.
+This Python script automates the process of upvoting posts on Quora and Reddit using the Selenium library.Please note that this code has been adjusted to not show personal information. This may mean that you will need to make some adjustments.
 
 Features
 Quora Automation: Handles the process of signing in to Quora and upvoting posts.
